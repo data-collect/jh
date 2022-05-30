@@ -1957,21 +1957,48 @@
           break;
 
         case 1:
-          var opco = document.getElementById("opco").value;
-          alert(encodeURIComponent(opco));
-          var url = new URL(
-            "https://script.google.com/macros/s/AKfycbzx7L3AVFUknaGbmMJBNL8SkWekwgk2dwosIyAxYHfEpRft5WW-HXB9lSXiGUWcS1mr/exec"
-          );
-          url.searchParams.append("opco", opco);
-          fetch(url)
-            .then((r) => r.json())
-            .then(function (data) {
-              console.log(data);
-            })
-            .catch((e) => console.log("Booo"));
-
+          if (priorIndex == 0) {
+            var opco = document.getElementById("opco").value;
+            var url = new URL(
+              "https://script.google.com/macros/s/AKfycbx6kzE2NR1kfxb0mXyA2hQHwKViRrsxgx2xTkqiIocdZ22lMcBHF0x8kLGtUDfGkk69/exec"
+            );
+            url.searchParams.append("opco", opco);
+            fetch(url)
+              .then((r) => r.json())
+              .then(function (data) {
+                var x = document.getElementById("name");
+                for (var i = 0; i < data.length; i++) {
+                  var option = document.createElement("option");
+                  option.text = data[i];
+                  option.value = data[i];
+                  x.add(option);
+                }
+              })
+              .catch((e) => alert("No name found for selection"));
+          }
           break;
         case 2:
+          if (priorIndex == 1) {
+            var opco = document.getElementById("opco").value;
+            var name = document.getElementById("name").value;
+            var url = new URL(
+              "https://script.google.com/macros/s/AKfycbx6kzE2NR1kfxb0mXyA2hQHwKViRrsxgx2xTkqiIocdZ22lMcBHF0x8kLGtUDfGkk69/exec"
+            );
+            url.searchParams.append("opco", opco);
+            url.searchParams.append("name", opco);
+            fetch(url)
+              .then((r) => r.json())
+              .then(function (data) {
+                var x = document.getElementById("counter");
+                for (var i = 0; i < data.length; i++) {
+                  var option = document.createElement("option");
+                  option.text = data[i];
+                  option.value = data[i];
+                  x.add(option);
+                }
+              })
+              .catch((e) => alert("No counter is mapped for selection"));
+          }
           break;
 
         case 3:
