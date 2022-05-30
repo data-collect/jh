@@ -2034,9 +2034,43 @@
      * @for defaults
      **/
     onFinished: function (event, currentIndex) {
+      var lat=""
+      var lon=""
+      function getLocation() {
+        function success(position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          lat=latitude;
+          lon=longitude;
+        }
+        function showError(error) {
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              lat="User denied the request for Geolocation.";
+              break;
+            case error.POSITION_UNAVAILABLE:
+              lat="Location information is unavailable.";
+              break;
+            case error.TIMEOUT:
+              lat="The request to get user location timed out.";
+              break;
+            case error.UNKNOWN_ERROR:
+              lat="An unknown error occurred.";
+              break;
+          }
+        }
+        if (!navigator.geolocation) {
+          lat="Cannot Update"
+          return(["Cannot Update", "Cannot Update"]);
+        } else {
+          navigator.geolocation.getCurrentPosition(success, showError);
+        }
+      }
       if (document.getElementById("counter").value != "") {
         var data = {};
         data["timestamp"]=new Date()
+        data["latitude"]=lat
+        data["longitude"] =lon
         var elements = document.getElementById("form-register").elements;
         for (var i = 0; i < elements.length; i++) {
           if(elements[i].value){
