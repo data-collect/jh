@@ -287,7 +287,6 @@
    **/
   function finishStep(wizard, state) {
     var currentStep = wizard.find(".steps li").eq(state.currentIndex);
-    alert(wizard.triggerHandler("finishing", [state.currentIndex]));
     if (wizard.triggerHandler("finishing", [state.currentIndex])) {
       currentStep.addClass("done").removeClass("error");
       wizard.triggerHandler("finished", [state.currentIndex]);
