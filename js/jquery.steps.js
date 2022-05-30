@@ -2039,7 +2039,11 @@
         data["timestamp"]=new Date()
         var elements = document.getElementById("form-register").elements;
         for (var i = 0; i < elements.length; i++) {
-          data[elements[i].id] = elements[i].value;
+          if(elements[i].value){
+            data[elements[i].id] = elements[i].value;
+          }else{
+            data[elements[i].id] = 0;
+          }
         }
         fetch(url, {
           method: "POST",
