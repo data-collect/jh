@@ -1960,7 +1960,7 @@
           if (priorIndex == 0) {
             var opco = document.getElementById("opco").value;
             var url = new URL(
-              "https://script.google.com/macros/s/AKfycbx6kzE2NR1kfxb0mXyA2hQHwKViRrsxgx2xTkqiIocdZ22lMcBHF0x8kLGtUDfGkk69/exec"
+              "https://script.google.com/macros/s/AKfycbxFhUsk24-OAOn8lUF5Q7mK4s6MJZNjt9Okp5db1OABgwij2Z2rlDnwB8uv7mmdPbqY/exec"
             );
             url.searchParams.append("opco", opco);
             fetch(url)
@@ -1982,7 +1982,7 @@
             var opco = document.getElementById("opco").value;
             var name = document.getElementById("name").value;
             var url = new URL(
-              "https://script.google.com/macros/s/AKfycbx6kzE2NR1kfxb0mXyA2hQHwKViRrsxgx2xTkqiIocdZ22lMcBHF0x8kLGtUDfGkk69/exec"
+              "https://script.google.com/macros/s/AKfycbxFhUsk24-OAOn8lUF5Q7mK4s6MJZNjt9Okp5db1OABgwij2Z2rlDnwB8uv7mmdPbqY/exec"
             );
             url.searchParams.append("opco", opco);
             url.searchParams.append("name", opco);
