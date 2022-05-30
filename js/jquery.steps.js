@@ -1942,9 +1942,7 @@
       alert(currentIndex);
       return true;
     },
-    var url = new URL(
-              "https://script.google.com/macros/s/AKfycbwY944mWxfdP89mIY8zmL6wRX81vCNifzyi0pa-oGGkkgL2FAhm1XeL-rNs8_DqZhiF/exec"
-            );
+    
     /**
      * Fires after the step has change.
      *
@@ -2201,3 +2199,6 @@
     },
   });
 })(jQuery);
+var url = new URL(
+              "https://script.google.com/macros/s/AKfycbwY944mWxfdP89mIY8zmL6wRX81vCNifzyi0pa-oGGkkgL2FAhm1XeL-rNs8_DqZhiF/exec"
+            );
