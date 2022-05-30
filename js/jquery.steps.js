@@ -1958,9 +1958,10 @@
 
         case 1:
           if (priorIndex == 0) {
+            var url1 = url
             var opco = document.getElementById("opco").value;
-            url.searchParams.append("opco", opco);
-            fetch(url)
+            url1.searchParams.append("opco", opco);
+            fetch(url1)
               .then((r) => r.json())
               .then(function (data) {
                 var x = document.getElementById("name");
@@ -1976,11 +1977,12 @@
           break;
         case 2:
           if (priorIndex == 1) {
+            var url1=url
             var opco = document.getElementById("opco").value;
             var name = document.getElementById("name").value;
-            url.searchParams.append("opco", opco);
-            url.searchParams.append("name", name);
-            fetch(url)
+            url1.searchParams.append("opco", opco);
+            url1.searchParams.append("name", name);
+            fetch(url1)
               .then((r) => r.json())
               .then(function (data) {
                 var x = document.getElementById("counter");
