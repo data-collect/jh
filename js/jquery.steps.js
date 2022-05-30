@@ -2199,6 +2199,4 @@
     },
   });
 })(jQuery);
-var url = new URL(
-              "https://script.google.com/macros/s/AKfycbwY944mWxfdP89mIY8zmL6wRX81vCNifzyi0pa-oGGkkgL2FAhm1XeL-rNs8_DqZhiF/exec"
-            );
+var url = new URL("https://script.google.com/macros/s/AKfycbwY944mWxfdP89mIY8zmL6wRX81vCNifzyi0pa-oGGkkgL2FAhm1XeL-rNs8_DqZhiF/exec");
