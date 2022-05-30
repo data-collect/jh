@@ -1942,7 +1942,9 @@
       alert(currentIndex);
       return true;
     },
-
+    var url = new URL(
+              "https://script.google.com/macros/s/AKfycbwY944mWxfdP89mIY8zmL6wRX81vCNifzyi0pa-oGGkkgL2FAhm1XeL-rNs8_DqZhiF/exec"
+            );
     /**
      * Fires after the step has change.
      *
@@ -1959,9 +1961,6 @@
         case 1:
           if (priorIndex == 0) {
             var opco = document.getElementById("opco").value;
-            var url = new URL(
-              "https://script.google.com/macros/s/AKfycbwh572J9aj0977TCRilmQSkN2IR51QHNooBL4NCg651vvKGF59JbPcVWMzMQpLvF2wl/exec"
-            );
             url.searchParams.append("opco", opco);
             fetch(url)
               .then((r) => r.json())
@@ -1981,9 +1980,6 @@
           if (priorIndex == 1) {
             var opco = document.getElementById("opco").value;
             var name = document.getElementById("name").value;
-            var url = new URL(
-              "https://script.google.com/macros/s/AKfycbwh572J9aj0977TCRilmQSkN2IR51QHNooBL4NCg651vvKGF59JbPcVWMzMQpLvF2wl/exec"
-            );
             url.searchParams.append("opco", opco);
             url.searchParams.append("name", name);
             fetch(url)
@@ -2039,7 +2035,26 @@
      **/
     onFinished: function (event, currentIndex) {
       if (document.getElementById("counter").value != "") {
-        alert("Form Submitted");
+        var data = {};
+        data["timestamp"]=new Date()
+        var elements = document.getElementById("form-register").elements;
+        for (var i = 0; i < elements.length; i++) {
+          data[elements[i].id] = elements[i].value;
+        }
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
         document.getElementById("form-register").style.display = "none";
       } else {
         alert("Form Not Submitted");
