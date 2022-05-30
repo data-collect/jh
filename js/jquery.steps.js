@@ -1951,7 +1951,33 @@
      * @default function (event, currentIndex, priorIndex) { }
      * @for defaults
      **/
-    onStepChanged: function (event, currentIndex, priorIndex) {},
+    onStepChanged: function (event, currentIndex, priorIndex) {
+    switch (currentIndex) {
+        case 0:
+          break;
+
+        case 1:
+          var opco = document.getElementById("opco").value;
+          alert(encodeURIComponent(opco));
+          var url = new URL(
+            "https://script.google.com/macros/s/AKfycbx6kzE2NR1kfxb0mXyA2hQHwKViRrsxgx2xTkqiIocdZ22lMcBHF0x8kLGtUDfGkk69/exec"
+          );
+          url.searchParams.append("opco", opco);
+          fetch(url)
+            .then((r) => r.json())
+            .then(function (data) {
+              console.log(data);
+            })
+            .catch((e) => console.log("Booo"));
+
+          break;
+        case 2:
+          break;
+
+        case 3:
+          break;
+      }
+    },
 
     /**
      * Fires after cancelation.
