@@ -2086,7 +2086,6 @@
                 alert("Data Updated")
               })
               .catch((e) => alert("No name found for selection"));
-          }
         document.getElementById("form-register").style.display = "none";
       } else {
         alert("Form Not Submitted");
