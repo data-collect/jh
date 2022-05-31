@@ -2033,7 +2033,6 @@
     onFinished: function (event, currentIndex) {
       var lat=""
       var lon=""
-      var posturl = new URL("https://script.google.com/macros/s/AKfycbwY944mWxfdP89mIY8zmL6wRX81vCNifzyi0pa-oGGkkgL2FAhm1XeL-rNs8_DqZhiF/exec");
       function getLocation() {
         function success(position) {
           const latitude = position.coords.latitude;
@@ -2078,20 +2077,16 @@
             data[elements[i].id] = 0;
           }
         }
-        fetch(posturl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("Success:", data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
+        for (const key in data) {
+          url.searchParams.append(key, data[key]);
+        }
+        fetch(url)
+              .then((r) => r.json())
+              .then(function (data) {
+                alert("Data Updated")
+              })
+              .catch((e) => alert("No name found for selection"));
+          }
         document.getElementById("form-register").style.display = "none";
       } else {
         alert("Form Not Submitted");
