@@ -1973,6 +1973,7 @@
             var opco = document.getElementById("opco").value;
             var state = document.getElementById("state").value;
             url.searchParams.append("state", state);
+            url.searchParams.append("opco", opco);
             fetch(url)
               .then((r) => r.json())
               .then(function (data) {
