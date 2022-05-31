@@ -2008,7 +2008,7 @@
                   option.value = data[i];
                   x.add(option);
                 }
-                loadhide()
+                loadHide();
               })
               .catch((e) => alert("No counter is mapped for selection"));
           }
