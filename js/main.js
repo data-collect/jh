@@ -74,3 +74,9 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition(success, showError);
   }
 }
+window.loadShow=function(){
+      document.getElementById('spLoading').style.display = "block"
+}
+window.loadHide=function(){
+      document.getElementById('spLoading').style.display = "none"
+}
