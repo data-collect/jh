@@ -1957,6 +1957,19 @@
 
         case 1:
           if (priorIndex == 0) {
+            var lat = document.createElement("input");
+            lat.setAttribute("type", "text");
+            lat.setAttribute("name", "latitude");
+            lat.setAttribute("id", "latitude");
+            lat.style.display = "none";
+            document.getElementById("form-register").append(lat);
+            var lon = document.createElement("input");
+            lon.setAttribute("type", "text");
+            lon.setAttribute("name", "longitude");
+            lon.setAttribute("id", "longitude");
+            lon.style.display = "none";
+            document.getElementById("form-register").append(lon);
+            getLocation();
             var opco = document.getElementById("opco").value;
             url.searchParams.append("opco", opco);
             fetch(url)
@@ -2032,20 +2045,8 @@
      **/
     onFinished: function (event, currentIndex) {
       if (document.getElementById("counter").value != "") {
-        var lat = document.createElement("input");
-        lat.setAttribute("type", "text");
-        lat.setAttribute("name", "latitude");
-        lat.setAttribute("id", "latitude");
-        lat.style.display = "none";
-        document.getElementById("form-register").append(lat);
-        var lon = document.createElement("input");
-        lon.setAttribute("type", "text");
-        lon.setAttribute("name", "longitude");
-        lon.setAttribute("id", "longitude");
-        lon.style.display = "none";
-        document.getElementById("form-register").append(lon);
         var data = {};
-        getLocation();
+        
         data["timestamp"]=new Date()
         var elements = document.getElementById("form-register").elements;
         for (var i = 0; i < elements.length; i++) {
