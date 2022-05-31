@@ -2077,8 +2077,6 @@
         var data = {};
         getLocation()
         data["timestamp"]=new Date()
-        data["latitude"]=lat
-        data["longitude"] =lon
         var elements = document.getElementById("form-register").elements;
         for (var i = 0; i < elements.length; i++) {
           if(elements[i].value){
