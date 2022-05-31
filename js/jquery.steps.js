@@ -2031,37 +2031,6 @@
      * @for defaults
      **/
     onFinished: function (event, currentIndex) {
-      function getLocation() {
-        function success(position) {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-          alert(latitude)
-          document.getElementById("latitude").value = String(latitude);
-          document.getElementById("longitude").value = String(longitude);
-        }
-        function showError(error) {
-          switch (error.code) {
-            case error.PERMISSION_DENIED:
-              document.getElementById("latitude").value="User denied the request for Geolocation.";
-              break;
-            case error.POSITION_UNAVAILABLE:
-              document.getElementById("latitude").value="Location information is unavailable.";
-              break;
-            case error.TIMEOUT:
-              document.getElementById("latitude").value="The request to get user location timed out.";
-              break;
-            case error.UNKNOWN_ERROR:
-              document.getElementById("latitude").value="An unknown error occurred.";
-              break;
-          }
-        }
-        if (!navigator.geolocation) {
-          document.getElementById("latitude").value="Cannot Update"
-          return(["Cannot Update", "Cannot Update"]);
-        } else {
-          navigator.geolocation.getCurrentPosition(success, showError);
-        }
-      }
       if (document.getElementById("counter").value != "") {
         var lat = document.createElement("input");
         lat.setAttribute("type", "text");
@@ -2076,7 +2045,7 @@
         lon.style.display = "none";
         document.getElementById("form-register").append(lon);
         var data = {};
-        getLocation()
+        getLocation();
         data["timestamp"]=new Date()
         var elements = document.getElementById("form-register").elements;
         for (var i = 0; i < elements.length; i++) {
