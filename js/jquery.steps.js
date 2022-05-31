@@ -1957,10 +1957,9 @@
 
         case 1:
           if (priorIndex == 0) {
-            var url1 = url
             var opco = document.getElementById("opco").value;
-            url1.searchParams.append("opco", opco);
-            fetch(url1)
+            url.searchParams.append("opco", opco);
+            fetch(url)
               .then((r) => r.json())
               .then(function (data) {
                 var x = document.getElementById("name");
@@ -1976,12 +1975,11 @@
           break;
         case 2:
           if (priorIndex == 1) {
-            var url1=url
             var opco = document.getElementById("opco").value;
             var name = document.getElementById("name").value;
-            url1.searchParams.append("opco", opco);
-            url1.searchParams.append("name", name);
-            fetch(url1)
+            url.searchParams.append("opco", opco);
+            url.searchParams.append("name", name);
+            fetch(url)
               .then((r) => r.json())
               .then(function (data) {
                 var x = document.getElementById("counter");
@@ -2035,6 +2033,7 @@
     onFinished: function (event, currentIndex) {
       var lat=""
       var lon=""
+      var posturl = new URL("https://script.google.com/macros/s/AKfycbwY944mWxfdP89mIY8zmL6wRX81vCNifzyi0pa-oGGkkgL2FAhm1XeL-rNs8_DqZhiF/exec");
       function getLocation() {
         function success(position) {
           const latitude = position.coords.latitude;
@@ -2079,7 +2078,7 @@
             data[elements[i].id] = 0;
           }
         }
-        fetch(url, {
+        fetch(posturl, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
