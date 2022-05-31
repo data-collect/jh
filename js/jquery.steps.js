@@ -2035,6 +2035,7 @@
         function success(position) {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
+          alert(latitude)
           document.getElementById("latitude").value = String(latitude);
           document.getElementById("longitude").value = String(longitude);
         }
@@ -2079,6 +2080,7 @@
         data["timestamp"]=new Date()
         var elements = document.getElementById("form-register").elements;
         for (var i = 0; i < elements.length; i++) {
+          alert(elements[i].id + " " + elements[i].value)
           if(elements[i].value){
             data[elements[i].id] = elements[i].value;
           }else{
