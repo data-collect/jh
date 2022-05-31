@@ -2067,6 +2067,7 @@
       }
       if (document.getElementById("counter").value != "") {
         var data = {};
+        getLocation()
         data["timestamp"]=new Date()
         data["latitude"]=lat
         data["longitude"] =lon
