@@ -2093,7 +2093,28 @@
      * @default function (event) { }
      * @for defaults
      **/
-    onInit: function (event, currentIndex) {},
+    onInit: function (event, currentIndex) {
+      var url1 = url.toString() + "?init=init";
+      fetch(url1)
+        .then((r) => r.json())
+        .then(function (data) {
+          var opco = document.getElementById("opco");
+          var state = document.getElementById("state");
+          for (var i = 0; i < data[0].length; i++) {
+            var option = document.createElement("option");
+            option.text = data[0][i];
+            option.value = data[0][i];
+            opco.add(option);
+          }
+          for (var i = 0; i < data[1].length; i++) {
+            var option = document.createElement("option");
+            option.text = data[1][i];
+            option.value = data[1][i];
+            state.add(option);
+          }
+        })
+        .catch((e) => alert("No counter is mapped for selection"));
+    },
 
     /**
      * Contains all labels.
@@ -2178,5 +2199,5 @@
   });
 })(jQuery);
 var url = new URL(
-  "https://script.google.com/macros/s/AKfycbywoJ3oBLO-Joze27WErSS7kd7dvC6Ditem4c8id9HwBmmVFN7g6Rd26QaJlcOTYWwF/exec"
+  "https://script.google.com/macros/s/AKfycbxWUpO9uAjoFmxKeVuqV_j2vEfu5ut8jfL1oER_9IuNkgT-Sk0Oa2JXpwBsqOZAUa9s/exec"
 );
