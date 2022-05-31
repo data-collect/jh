@@ -1941,7 +1941,7 @@
       alert(currentIndex);
       return true;
     },
-    
+
     /**
      * Fires after the step has change.
      *
@@ -1951,7 +1951,7 @@
      * @for defaults
      **/
     onStepChanged: function (event, currentIndex, priorIndex) {
-    switch (currentIndex) {
+      switch (currentIndex) {
         case 0:
           break;
 
@@ -1972,7 +1972,6 @@
             getLocation();
             var opco = document.getElementById("opco").value;
             url.searchParams.append("opco", opco);
-            loadShow();
             fetch(url)
               .then((r) => r.json())
               .then(function (data) {
@@ -1983,11 +1982,9 @@
                   option.value = data[i];
                   x.add(option);
                 }
-              loadHide();
               })
               .catch(function (e) {
                 alert("No name found for selection");
-                loadHide();
               });
           }
           break;
@@ -1997,7 +1994,6 @@
             var name = document.getElementById("name").value;
             url.searchParams.append("opco", opco);
             url.searchParams.append("name", name);
-            loadShow();
             fetch(url)
               .then((r) => r.json())
               .then(function (data) {
@@ -2008,7 +2004,6 @@
                   option.value = data[i];
                   x.add(option);
                 }
-                loadHide();
               })
               .catch((e) => alert("No counter is mapped for selection"));
           }
@@ -2052,14 +2047,13 @@
      **/
     onFinished: function (event, currentIndex) {
       if (document.getElementById("counter").value != "") {
-        loadShow();
         var data = {};
-        data["timestamp"]=new Date()
+        data["timestamp"] = new Date();
         var elements = document.getElementById("form-register").elements;
         for (var i = 0; i < elements.length; i++) {
-          if(elements[i].value){
+          if (elements[i].value) {
             data[elements[i].id] = elements[i].value;
-          }else{
+          } else {
             data[elements[i].id] = 0;
           }
         }
@@ -2067,12 +2061,11 @@
           url.searchParams.append(key, data[key]);
         }
         fetch(url)
-              .then((r) => r.json())
-              .then(function (data) {
-              loadHide();  
-              alert("Data Updated");
-              })
-              .catch((e) => alert("Error Occured while updating"));
+          .then((r) => r.json())
+          .then(function (data) {
+            alert("Data Updated");
+          })
+          .catch((e) => alert("Error Occured while updating"));
         document.getElementById("form-register").style.display = "none";
       } else {
         alert("Form Not Submitted");
@@ -2181,4 +2174,6 @@
     },
   });
 })(jQuery);
-var url = new URL("https://script.google.com/macros/s/AKfycbztG8HgkXBJK3d0bDjtohUWgAKLT7GiGYtj1c-w7-DWCep4LI-dAFAg9shCsDLXmD4/exec");
+var url = new URL(
+  "https://script.google.com/macros/s/AKfycbztG8HgkXBJK3d0bDjtohUWgAKLT7GiGYtj1c-w7-DWCep4LI-dAFAg9shCsDLXmD4/exec"
+);
