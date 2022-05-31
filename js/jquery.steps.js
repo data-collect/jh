@@ -1971,7 +1971,8 @@
             document.getElementById("form-register").append(lon);
             getLocation();
             var opco = document.getElementById("opco").value;
-            url.searchParams.append("opco", opco);
+            var state = document.getElementById("state").value;
+            url.searchParams.append("state", state);
             fetch(url)
               .then((r) => r.json())
               .then(function (data) {
@@ -1994,6 +1995,7 @@
             var name = document.getElementById("name").value;
             url.searchParams.append("opco", opco);
             url.searchParams.append("name", name);
+            url.searchParams.append("state", state);
             fetch(url)
               .then((r) => r.json())
               .then(function (data) {
@@ -2175,5 +2177,5 @@
   });
 })(jQuery);
 var url = new URL(
-  "https://script.google.com/macros/s/AKfycbztG8HgkXBJK3d0bDjtohUWgAKLT7GiGYtj1c-w7-DWCep4LI-dAFAg9shCsDLXmD4/exec"
+  "https://script.google.com/macros/s/AKfycbywoJ3oBLO-Joze27WErSS7kd7dvC6Ditem4c8id9HwBmmVFN7g6Rd26QaJlcOTYWwF/exec"
 );
