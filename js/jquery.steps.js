@@ -2035,8 +2035,8 @@
         function success(position) {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
-          document.getElementById("latitude").value = latitude;
-          document.getElementById("longitude").value = longitude;
+          document.getElementById("latitude").value = String(latitude);
+          document.getElementById("longitude").value = String(longitude);
         }
         function showError(error) {
           switch (error.code) {
