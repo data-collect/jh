@@ -2031,39 +2031,49 @@
      * @for defaults
      **/
     onFinished: function (event, currentIndex) {
-      var lat=""
-      var lon=""
       function getLocation() {
         function success(position) {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
-          lat=latitude;
-          lon=longitude;
+          document.getElementById("latitude").value = latitude;
+          document.getElementById("longitude").value = longitude;
         }
         function showError(error) {
           switch (error.code) {
             case error.PERMISSION_DENIED:
-              lat="User denied the request for Geolocation.";
+              document.getElementById("latitude").value="User denied the request for Geolocation.";
               break;
             case error.POSITION_UNAVAILABLE:
-              lat="Location information is unavailable.";
+              document.getElementById("latitude").value="Location information is unavailable.";
               break;
             case error.TIMEOUT:
-              lat="The request to get user location timed out.";
+              document.getElementById("latitude").value="The request to get user location timed out.";
               break;
             case error.UNKNOWN_ERROR:
-              lat="An unknown error occurred.";
+              document.getElementById("latitude").value="An unknown error occurred.";
               break;
           }
         }
         if (!navigator.geolocation) {
-          lat="Cannot Update"
+          document.getElementById("latitude").value="Cannot Update"
           return(["Cannot Update", "Cannot Update"]);
         } else {
           navigator.geolocation.getCurrentPosition(success, showError);
         }
       }
       if (document.getElementById("counter").value != "") {
+        var lat = document.createElement("input");
+        lat.setAttribute("type", "text");
+        lat.setAttribute("name", "latitude");
+        lat.setAttribute("id", "latitude");
+        lat.style.display = "none";
+        document.getElementById("form-register").append(lat);
+        var lon = document.createElement("input");
+        lon.setAttribute("type", "text");
+        lon.setAttribute("name", "longitude");
+        lon.setAttribute("id", "longitude");
+        lon.style.display = "none";
+        document.getElementById("form-register").append(lon);
         var data = {};
         getLocation()
         data["timestamp"]=new Date()
