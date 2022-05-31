@@ -2063,7 +2063,7 @@
         fetch(url)
           .then((r) => r.json())
           .then(function (data) {
-            alert("Data Updated");
+            document.getElementById("output").innerHTML = "Data Updated";
           })
           .catch((e) => alert("Error Occured while updating"));
         document.getElementById("form-register").style.display = "none";
