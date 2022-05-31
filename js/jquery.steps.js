@@ -1985,7 +1985,7 @@
                 }
               loadHide();
               })
-              .catch((e) {
+              .catch(function (e) {
                 alert("No name found for selection");
                 loadHide();
               });
