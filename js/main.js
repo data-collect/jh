@@ -48,7 +48,6 @@ function getLocation() {
   function success(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    alert(latitude)
     document.getElementById("latitude").value = String(latitude);
     document.getElementById("longitude").value = String(longitude);
   }
