@@ -1972,6 +1972,7 @@
             getLocation();
             var opco = document.getElementById("opco").value;
             url.searchParams.append("opco", opco);
+            loadShow();
             fetch(url)
               .then((r) => r.json())
               .then(function (data) {
@@ -1982,8 +1983,12 @@
                   option.value = data[i];
                   x.add(option);
                 }
+              loadHide();
               })
-              .catch((e) => alert("No name found for selection"));
+              .catch((e) {
+                alert("No name found for selection");
+                loadHide();
+              });
           }
           break;
         case 2:
@@ -1992,6 +1997,7 @@
             var name = document.getElementById("name").value;
             url.searchParams.append("opco", opco);
             url.searchParams.append("name", name);
+            loadShow();
             fetch(url)
               .then((r) => r.json())
               .then(function (data) {
@@ -2002,6 +2008,7 @@
                   option.value = data[i];
                   x.add(option);
                 }
+                loadhide()
               })
               .catch((e) => alert("No counter is mapped for selection"));
           }
@@ -2045,6 +2052,7 @@
      **/
     onFinished: function (event, currentIndex) {
       if (document.getElementById("counter").value != "") {
+        loadShow();
         var data = {};
         data["timestamp"]=new Date()
         var elements = document.getElementById("form-register").elements;
@@ -2061,9 +2069,10 @@
         fetch(url)
               .then((r) => r.json())
               .then(function (data) {
-                alert("Data Updated")
+              loadHide();  
+              alert("Data Updated");
               })
-              .catch((e) => alert("No name found for selection"));
+              .catch((e) => alert("Error Occured while updating"));
         document.getElementById("form-register").style.display = "none";
       } else {
         alert("Form Not Submitted");
