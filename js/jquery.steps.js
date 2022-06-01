@@ -2179,6 +2179,7 @@
           document.getElementById("output").innerHTML = "Data Submitted";
 
           loadHide();
+          document.getElementById("form-register").style.display = "none";
         })
         .catch(function (e) {
           loadHide();
