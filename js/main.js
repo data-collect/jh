@@ -85,5 +85,6 @@ window.loadShow = function () {
 };
 window.loadHide = function () {
   document.getElementById("spLoading").style.display = "none";
-  document.getElementsByClassName("wizard-v1-content")[0].style.display = block;
+  document.getElementsByClassName("wizard-v1-content")[0].style.display =
+    "block";
 };
