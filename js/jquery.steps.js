@@ -2037,7 +2037,7 @@
                   input.type = "number";
                   input.placeholder = "No.of Bags";
                   input.className = "form-control";
-                  input.name = data[i] + " Sale";
+                  input.name = data[i] + "_Sale";
                   input.id = "nobags" + String(i);
                   var inputLabel = document.createElement("Label");
                   inputLabel.setAttribute("for", input.id);
@@ -2050,7 +2050,7 @@
                   input1.type = "number";
                   input1.placeholder = "No.of Bags";
                   input1.className = "form-control";
-                  input1.name = data[i] + " RSP";
+                  input1.name = data[i] + "_RSP";
                   input1.id = "rsp" + String(i);
                   var input1Label = document.createElement("Label");
                   input1Label.setAttribute("for", input1.id);
@@ -2065,7 +2065,7 @@
                   x.appendChild(formrow);
                 }
               })
-              .catch((e) => alert("No counter is mapped for selection"));
+              .catch((e) => alert("No brand is mapped for selection"));
           }
           break;
       }
@@ -2257,5 +2257,5 @@
   });
 })(jQuery);
 var geturl = new URL(
-  "https://script.google.com/macros/s/AKfycbxWPVjP_PWsfvRQZ8iR2c_8FWBwCLhjO_mYfOUjz8-cRbokFPToqYNXS3A7KUdc0Dtj/exec"
+  "https://script.google.com/macros/s/AKfycbwkLQkLxI_w7sWRKFZUUkPLSpE1V6aav6jh7C8KhJjqlPKeOBwPm-GjgH8D2t1x3p81/exec"
 );
