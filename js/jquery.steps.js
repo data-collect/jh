@@ -1938,7 +1938,7 @@
      * @for defaults
      **/
     onStepChanging: function (event, currentIndex, newIndex) {
-      alert(currentIndex);
+      loadShow();
       return true;
     },
 
