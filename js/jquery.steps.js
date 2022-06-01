@@ -2153,14 +2153,15 @@
               );
               return;
             } else {
-              alert(
-                "Pl update " +
-                  key.split("_Sale")[0] +
-                  " Retail Sales Price(Rs/Bag) field"
-              );
-              return;
+              if (data[key.split("_Sale")[0] + "_RSP"] == 0) {
+                alert(
+                  "Pl update " +
+                    key.split("_Sale")[0] +
+                    " Retail Sales Price(Rs/Bag) field"
+                );
+                return;
+              }
             }
-            break;
           }
         }
       }
