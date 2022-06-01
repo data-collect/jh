@@ -2105,10 +2105,13 @@
         data["timestamp"] = new Date();
         var elements = document.getElementById("form-register").elements;
         for (var i = 0; i < elements.length; i++) {
+          if (!elements[i].name) {
+            elements[i].name = elements[i].id;
+          }
           if (elements[i].value) {
-            data[elements[i].id] = elements[i].value;
+            data[elements[i].name] = elements[i].value;
           } else {
-            data[elements[i].id] = 0;
+            data[elements[i].name] = 0;
           }
         }
         for (const key in data) {
