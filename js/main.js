@@ -80,7 +80,9 @@ function getLocation() {
 }
 window.loadShow = function () {
   document.getElementById("spLoading").style.display = "block";
+  document.getElementById("form-register").style.display = "none";
 };
 window.loadHide = function () {
   document.getElementById("spLoading").style.display = "none";
+  document.getElementById("form-register").style.display = "block";
 };
