@@ -2118,7 +2118,6 @@
      * @for defaults
      **/
     onFinished: function (event, currentIndex) {
-      var flag = false;
       var data = {};
       var elements = document.getElementById("form-register").elements;
       for (var i = 0; i < elements.length; i++) {
