@@ -2051,6 +2051,8 @@
                   input1.placeholder = "No.of Bags";
                   input1.className = "form-control";
                   input1.name = data[i] + "_RSP";
+                  input1.min = 0;
+                  input1.max = 700;
                   input1.id = "rsp" + String(i);
                   var input1Label = document.createElement("Label");
                   input1Label.setAttribute("for", input1.id);
@@ -2103,21 +2105,57 @@
      * @for defaults
      **/
     onFinished: function (event, currentIndex) {
-      if (document.getElementById("counter").value != "") {
-        var url = new URL(geturl.toString());
-        var data = {};
-        data["timestamp"] = new Date();
-        var elements = document.getElementById("form-register").elements;
-        for (var i = 0; i < elements.length; i++) {
-          if (!elements[i].name) {
-            elements[i].name = elements[i].id;
-          }
-          if (elements[i].value) {
-            data[elements[i].name] = elements[i].value;
-          } else {
-            data[elements[i].name] = 0;
+      var flag = false;
+      var data = {};
+      var elements = document.getElementById("form-register").elements;
+      for (var i = 0; i < elements.length; i++) {
+        if (!elements[i].name) {
+          elements[i].name = elements[i].id;
+        }
+        if (elements[i].value) {
+          data[elements[i].name] = elements[i].value;
+        } else {
+          data[elements[i].name] = 0;
+        }
+      }
+      var atleastOneValueUpdated = false;
+      for (const key in data) {
+        if (key.indexOf("_Sale") != -1) {
+          if (data[key] != 0 || data[key.split("_Sale")[0] + "_RSP"] != 0) {
+            atleastOneValueUpdated = true;
+            break;
           }
         }
+      }
+      if (!atleastOneValueUpdated) {
+        alert("Please update data before submission");
+        return;
+      }
+      for (const key in data) {
+        if (key.indexOf("_Sale") != -1) {
+          if (data[key] != 0 || data[key.split("_Sale")[0] + "_RSP"] != 0) {
+            if (data[key] == 0) {
+              alert(
+                "Pl update " + key.split("_Sale")[0] + " Sale(No.of bags) field"
+              );
+              return;
+            } else {
+              alert(
+                "Pl update " +
+                  key.split("_Sale")[0] +
+                  " Retail Sales Price(Rs/Bag) field"
+              );
+              return;
+            }
+            break;
+          }
+        }
+      }
+
+      if (flag) {
+        var url = new URL(geturl.toString());
+        data["timestamp"] = new Date();
+
         for (const key in data) {
           url.searchParams.append(key, data[key]);
         }
@@ -2257,5 +2295,5 @@
   });
 })(jQuery);
 var geturl = new URL(
-  "https://script.google.com/macros/s/AKfycbwMe7chHIpY93qe6qCjflG1Zik-DTiyfQXkTDqkeRM20Uq_S2_4YnHuwKKXYuWYUih9/exec"
+  "https://script.google.com/macros/s/AKfycbyF_U-OAP8UrV1VcC2sruDKxikxwtW51DHg1MexFze-BZ1zrBXaQooavvNUvhPJhRYr/exec"
 );
