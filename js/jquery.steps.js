@@ -2257,5 +2257,5 @@
   });
 })(jQuery);
 var geturl = new URL(
-  "https://script.google.com/macros/s/AKfycbwkLQkLxI_w7sWRKFZUUkPLSpE1V6aav6jh7C8KhJjqlPKeOBwPm-GjgH8D2t1x3p81/exec"
+  "https://script.google.com/macros/s/AKfycbwMe7chHIpY93qe6qCjflG1Zik-DTiyfQXkTDqkeRM20Uq_S2_4YnHuwKKXYuWYUih9/exec"
 );
