@@ -2172,17 +2172,18 @@
         url.searchParams.append(key, data[key]);
       }
       loadShow();
+      document.getElementById("form-register").style.display = "none";
       fetch(url)
         .then((r) => r.json())
         .then(function (data) {
           document.getElementById("output").innerHTML = "Data Submitted";
+
           loadHide();
         })
         .catch(function (e) {
           loadHide();
           alert("Error Occured while updating");
         });
-      document.getElementById("form-register").style.display = "none";
     },
 
     /**
