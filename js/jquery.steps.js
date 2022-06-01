@@ -2166,28 +2166,24 @@
         }
       }
 
-      if (flag) {
-        var url = new URL(geturl.toString());
-        data["timestamp"] = new Date();
+      var url = new URL(geturl.toString());
+      data["timestamp"] = new Date();
 
-        for (const key in data) {
-          url.searchParams.append(key, data[key]);
-        }
-        loadShow();
-        fetch(url)
-          .then((r) => r.json())
-          .then(function (data) {
-            document.getElementById("output").innerHTML = "Data Submitted";
-            loadHide();
-          })
-          .catch(function (e) {
-            loadHide();
-            alert("Error Occured while updating");
-          });
-        document.getElementById("form-register").style.display = "none";
-      } else {
-        alert("Form Not Submitted");
+      for (const key in data) {
+        url.searchParams.append(key, data[key]);
       }
+      loadShow();
+      fetch(url)
+        .then((r) => r.json())
+        .then(function (data) {
+          document.getElementById("output").innerHTML = "Data Submitted";
+          loadHide();
+        })
+        .catch(function (e) {
+          loadHide();
+          alert("Error Occured while updating");
+        });
+      document.getElementById("form-register").style.display = "none";
     },
 
     /**
