@@ -2048,7 +2048,7 @@
                   div1.className = "form-holder";
                   var input1 = document.createElement("input");
                   input1.type = "number";
-                  input1.placeholder = "No.of Bags";
+                  input1.placeholder = "Rs/bag";
                   input1.className = "form-control";
                   input1.name = data[i] + "_RSP";
                   input1.min = 0;
