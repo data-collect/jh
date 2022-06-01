@@ -1994,6 +1994,7 @@
           if (priorIndex == 1) {
             var opco = document.getElementById("opco").value;
             var name = document.getElementById("name").value;
+            var state = document.getElementById("state").value;
             url.searchParams.append("opco", opco);
             url.searchParams.append("name", name);
             url.searchParams.append("state", state);
@@ -2013,6 +2014,56 @@
           break;
 
         case 3:
+          if (priorIndex == 2) {
+            var opco = document.getElementById("opco").value;
+            var name = document.getElementById("name").value;
+            var state = document.getElementById("state").value;
+            var counter = document.getElementById("counter").value;
+            url.searchParams.append("opco", opco);
+            url.searchParams.append("name", name);
+            url.searchParams.append("state", state);
+            url.searchParams.append("counter", counter);
+            fetch(url)
+              .then((r) => r.json())
+              .then(function (data) {
+                var x = document.getElementById("branddetails");
+                for (var i = 0; i < data.length; i++) {
+                  var div = document.createElement("div");
+                  div.className = "form-holder";
+                  var input = document.createElement("input");
+                  input.type = "number";
+                  input.placeholder = "No.of Bags";
+                  input.className = "form-control";
+                  input.name = data[i] + " Sale";
+                  input.id = "nobags" + String(i);
+                  var inputLabel = document.createElement("Label");
+                  inputLabel.setAttribute("for", input.id);
+                  inputLabel.innerHTML = data[i] + " Sale(No.of bags)";
+                  div.add(inputLabel);
+                  div.add(input);
+                  var div1 = document.createElement("div");
+                  div1.className = "form-holder";
+                  var input1 = document.createElement("input");
+                  input1.type = "number";
+                  input1.placeholder = "No.of Bags";
+                  input1.className = "form-control";
+                  input1.name = data[i] + " RSP";
+                  input1.id = "rsp" + String(i);
+                  var input1Label = document.createElement("Label");
+                  input1Label.setAttribute("for", input1.id);
+                  input1Label.innerHTML =
+                    data[i] + " Retail Sales Price(Rs/Bag)";
+                  div1.add(input1Label);
+                  div1.add(input1);
+                  var formrow = document.createElement("div");
+                  formrow.className = "form-row";
+                  formrow.add(div);
+                  formrow.add(div1);
+                  x.add(formrow);
+                }
+              })
+              .catch((e) => alert("No counter is mapped for selection"));
+          }
           break;
       }
     },
@@ -2066,7 +2117,7 @@
         fetch(url)
           .then((r) => r.json())
           .then(function (data) {
-            document.getElementById("output").innerHTML = "Data Updated";
+            document.getElementById("output").innerHTML = "Data Submitted";
           })
           .catch((e) => alert("Error Occured while updating"));
         document.getElementById("form-register").style.display = "none";
