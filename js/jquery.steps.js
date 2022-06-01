@@ -2029,7 +2029,6 @@
             fetch(url)
               .then((r) => r.json())
               .then(function (data) {
-                console.log(data);
                 var x = document.getElementById("branddetails");
                 for (var i = 0; i < data.length; i++) {
                   var div = document.createElement("div");
