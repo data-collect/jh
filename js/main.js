@@ -54,29 +54,36 @@ function getLocation() {
   function showError(error) {
     switch (error.code) {
       case error.PERMISSION_DENIED:
-        document.getElementById("latitude").value="User denied the request for Geolocation.";
+        document.getElementById("latitude").value =
+          "User denied the request for Geolocation.";
         break;
       case error.POSITION_UNAVAILABLE:
-        document.getElementById("latitude").value="Location information is unavailable.";
+        document.getElementById("latitude").value =
+          "Location information is unavailable.";
         break;
       case error.TIMEOUT:
-        document.getElementById("latitude").value="The request to get user location timed out.";
+        document.getElementById("latitude").value =
+          "The request to get user location timed out.";
         break;
       case error.UNKNOWN_ERROR:
-        document.getElementById("latitude").value="An unknown error occurred.";
+        document.getElementById("latitude").value =
+          "An unknown error occurred.";
         break;
     }
   }
   if (!navigator.geolocation) {
-    document.getElementById("latitude").value="Cannot Update"
-    return(["Cannot Update", "Cannot Update"]);
+    document.getElementById("latitude").value = "Cannot Update";
+    return ["Cannot Update", "Cannot Update"];
   } else {
     navigator.geolocation.getCurrentPosition(success, showError);
   }
 }
-window.loadShow=function(){
-      document.getElementById('spLoading').style.display = "block"
-}
-window.loadHide=function(){
-      document.getElementById('spLoading').style.display = "none"
-}
+window.loadShow = function () {
+  document.getElementsByClassName("wizard-v1-content")[0].style.display =
+    "none";
+  document.getElementById("spLoading").style.display = "block";
+};
+window.loadHide = function () {
+  document.getElementById("spLoading").style.display = "none";
+  document.getElementsByClassName("wizard-v1-content")[0].style.display = block;
+};
