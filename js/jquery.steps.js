@@ -2153,7 +2153,7 @@
      * @for defaults
      **/
     onInit: function (event, currentIndex) {
-      var url1 = url.toString() + "?init=init";
+      var url1 = geturl.toString() + "?init=init";
       fetch(url1)
         .then((r) => r.json())
         .then(function (data) {
