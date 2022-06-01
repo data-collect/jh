@@ -79,12 +79,17 @@ function getLocation() {
   }
 }
 window.loadShow = function () {
-  document.getElementsByClassName("wizard-v1-content")[0].style.display =
-    "none";
+  var sections = document.getElementsByTagName("section");
+  for (var i = 0; i < sections.length; i++) {
+    sections[i].style.display = "none";
+  }
+
   document.getElementById("spLoading").style.display = "block";
 };
 window.loadHide = function () {
   document.getElementById("spLoading").style.display = "none";
-  document.getElementsByClassName("wizard-v1-content")[0].style.display =
-    "block";
+  var sections = document.getElementsByTagName("section");
+  for (var i = 0; i < sections.length; i++) {
+    sections[i].style.display = "block";
+  }
 };
