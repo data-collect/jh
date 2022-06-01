@@ -2043,8 +2043,8 @@
                   var inputLabel = document.createElement("Label");
                   inputLabel.setAttribute("for", input.id);
                   inputLabel.innerHTML = data[i] + " Sale(No.of bags)";
-                  div.add(inputLabel);
-                  div.add(input);
+                  div.appendChild(inputLabel);
+                  div.appendChild(input);
                   var div1 = document.createElement("div");
                   div1.className = "form-holder";
                   var input1 = document.createElement("input");
@@ -2057,13 +2057,13 @@
                   input1Label.setAttribute("for", input1.id);
                   input1Label.innerHTML =
                     data[i] + " Retail Sales Price(Rs/Bag)";
-                  div1.add(input1Label);
-                  div1.add(input1);
+                  div1.appendChild(input1Label);
+                  div1.appendChild(input1);
                   var formrow = document.createElement("div");
                   formrow.className = "form-row";
-                  formrow.add(div);
-                  formrow.add(div1);
-                  x.add(formrow);
+                  formrow.appendChild(div);
+                  formrow.appendChild(div1);
+                  x.appendChild(formrow);
                 }
               })
               .catch((e) => alert("No counter is mapped for selection"));
