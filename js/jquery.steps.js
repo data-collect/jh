@@ -1957,6 +1957,7 @@
 
         case 1:
           if (priorIndex == 0) {
+            var url = new URL(geturl.toString());
             var lat = document.createElement("input");
             lat.setAttribute("type", "text");
             lat.setAttribute("name", "latitude");
@@ -1992,6 +1993,7 @@
           break;
         case 2:
           if (priorIndex == 1) {
+            var url = new URL(geturl.toString());
             var opco = document.getElementById("opco").value;
             var name = document.getElementById("name").value;
             var state = document.getElementById("state").value;
@@ -2015,6 +2017,7 @@
 
         case 3:
           if (priorIndex == 2) {
+            var url = new URL(geturl.toString());
             var opco = document.getElementById("opco").value;
             var name = document.getElementById("name").value;
             var state = document.getElementById("state").value;
@@ -2101,6 +2104,7 @@
      **/
     onFinished: function (event, currentIndex) {
       if (document.getElementById("counter").value != "") {
+        var url = new URL(geturl.toString());
         var data = {};
         data["timestamp"] = new Date();
         var elements = document.getElementById("form-register").elements;
@@ -2252,6 +2256,6 @@
     },
   });
 })(jQuery);
-var url = new URL(
+var geturl = new URL(
   "https://script.google.com/macros/s/AKfycbzW-y4_I5A8PFvOX0cZrNIIWfFXRdRle6g8Upse5QnrXsPxPyfZrV5GuRGH0UdwPuFn/exec"
 );
