@@ -1975,6 +1975,7 @@
             var state = document.getElementById("state").value;
             url.searchParams.append("state", state);
             url.searchParams.append("opco", opco);
+            loadShow();
             fetch(url)
               .then((r) => r.json())
               .then(function (data) {
@@ -1985,8 +1986,10 @@
                   option.value = data[i];
                   x.add(option);
                 }
+                loadHide();
               })
               .catch(function (e) {
+                loadHide();
                 alert("No name found for selection");
               });
           }
@@ -2000,6 +2003,7 @@
             url.searchParams.append("opco", opco);
             url.searchParams.append("name", name);
             url.searchParams.append("state", state);
+            loadShow();
             fetch(url)
               .then((r) => r.json())
               .then(function (data) {
@@ -2010,8 +2014,12 @@
                   option.value = data[i];
                   x.add(option);
                 }
+                loadHide();
               })
-              .catch((e) => alert("No counter is mapped for selection"));
+              .catch(function (e) {
+                loadHide();
+                alert("No counter is mapped for selection");
+              });
           }
           break;
 
@@ -2026,6 +2034,7 @@
             url.searchParams.append("name", name);
             url.searchParams.append("state", state);
             url.searchParams.append("counter", counter);
+            loadShow();
             fetch(url)
               .then((r) => r.json())
               .then(function (data) {
@@ -2066,8 +2075,12 @@
                   formrow.appendChild(div1);
                   x.appendChild(formrow);
                 }
+                loadHide();
               })
-              .catch((e) => alert("No brand is mapped for selection"));
+              .catch(function (e) {
+                loadHide();
+                alert("No brand is mapped for selection");
+              });
           }
           break;
       }
@@ -2159,12 +2172,17 @@
         for (const key in data) {
           url.searchParams.append(key, data[key]);
         }
+        loadShow();
         fetch(url)
           .then((r) => r.json())
           .then(function (data) {
             document.getElementById("output").innerHTML = "Data Submitted";
+            loadHide();
           })
-          .catch((e) => alert("Error Occured while updating"));
+          .catch(function (e) {
+            loadHide();
+            alert("Error Occured while updating");
+          });
         document.getElementById("form-register").style.display = "none";
       } else {
         alert("Form Not Submitted");
@@ -2190,6 +2208,7 @@
      * @for defaults
      **/
     onInit: function (event, currentIndex) {
+      loadShow();
       var url1 = geturl.toString() + "?init=init";
       fetch(url1)
         .then((r) => r.json())
@@ -2208,8 +2227,12 @@
             option.value = data[1][i];
             state.add(option);
           }
+          loadHide();
         })
-        .catch((e) => alert("No counter is mapped for selection"));
+        .catch(function (e) {
+          alert("No counter is mapped for selection");
+          loadHide();
+        });
     },
 
     /**
