@@ -2316,5 +2316,5 @@
   });
 })(jQuery);
 var geturl = new URL(
-  "https://script.google.com/macros/s/AKfycbxKhdeZq1NMI15FvGupmdsxVqdexVEUi3wy9EtGibHU8qQ3tKPYKdgjNXZ92QGrAmTI/exec"
+  "https://script.google.com/macros/s/AKfycbwJrN0V2AqRePM1NJhmVlzN1tr0dawgVoguxVCvInfEg0i7hgUqs52Vc00zrhKrOP7V/exec"
 );
