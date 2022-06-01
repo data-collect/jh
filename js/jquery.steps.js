@@ -819,7 +819,7 @@
         var previous = wizard.find(".actions a[href$='#previous']").parent();
         previous._enableAria(state.currentIndex > 0);
       }
-
+      loadShow();
       if (options.enableFinishButton && options.showFinishButtonAlways) {
         finish._enableAria(state.stepCount > 0);
         next._enableAria(
@@ -2034,6 +2034,8 @@
             url.searchParams.append("name", name);
             url.searchParams.append("state", state);
             url.searchParams.append("counter", counter);
+            document.getElementById("headtext").innerHTML =
+              counter + "<br>" + document.getElementById("headtext").innerHTML;
             loadShow();
             fetch(url)
               .then((r) => r.json())
@@ -2316,5 +2318,5 @@
   });
 })(jQuery);
 var geturl = new URL(
-  "https://script.google.com/macros/s/AKfycbwkz03GA4IDAsPN_EWxG7TN4sCXmPZgQ-3le0rSkUbsm2H_kVTflOOu60eMFiVLJxyN/exec"
+  "https://script.google.com/macros/s/AKfycbzwLbtwzC-_MSiHdzWiHb3Cu2w5y4ev76uWR9UAsGdahpsweoNiu-9o6SxpSWHKj51n/exec"
 );
