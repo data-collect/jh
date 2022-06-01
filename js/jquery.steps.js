@@ -830,6 +830,7 @@
           options.enableFinishButton &&
             state.stepCount === state.currentIndex + 1
         );
+        loadShow();
         next
           ._showAria(
             state.stepCount === 0 || state.stepCount > state.currentIndex + 1
