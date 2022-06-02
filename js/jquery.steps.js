@@ -2062,7 +2062,7 @@
                   input1.placeholder = "Rs/bag";
                   input1.className = "form-control";
                   input1.name = data[i] + "_RSP";
-                  input1.min = 0;
+                  input1.min = 150;
                   input1.max = 700;
                   input1.id = "rsp" + String(i);
                   var input1Label = document.createElement("Label");
