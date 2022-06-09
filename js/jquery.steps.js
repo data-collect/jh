@@ -2145,25 +2145,26 @@
         alert("Please update data before submission");
         return;
       }
+      var rspInRange = true;
       for (const key in data) {
         if (key.indexOf("_Sale") != -1) {
           if (data[key] != 0 && data[key.split("_Sale")[0] + "_RSP"] != 0) {
             if (data[key.split("_Sale")[0] + "_RSP"] < 100) {
               alert(key.split("_Sale")[0] + " RSP value cannot be below 100");
-              atleastOneValueUpdated = true;
+              rspInRange = false;
             } else {
               if (data[key.split("_Sale")[0] + "_RSP"] > 700) {
                 alert(
                   key.split("_Sale")[0] +
                     " RSP value cannot be greater than 700"
                 );
-                atleastOneValueUpdated = true;
+                rspInRange = false;
               }
             }
           }
         }
       }
-      if (!atleastOneValueUpdated) {
+      if (!rspInRange) {
         alert("Please correct RSP data before submission");
         return;
       }
