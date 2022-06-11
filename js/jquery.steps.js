@@ -2168,14 +2168,25 @@
       for (const key in data) {
         if (key.indexOf("_Sale") != -1) {
           if (data[key] != 0 && data[key.split("_Sale")[0] + "_RSP"] != 0) {
-            if (data[key.split("_Sale")[0] + "_RSP"] < 100) {
-              alert(key.split("_Sale")[0] + " RSP value cannot be below 100");
+            var rspLimitMin = document.getElementsByName(
+              key.split("_Sale")[0] + "_RSP"
+            )[0].min;
+            var rspLimitMax = document.getElementsByName(
+              key.split("_Sale")[0] + "_RSP"
+            )[0].max;
+            if (data[key.split("_Sale")[0] + "_RSP"] < rspLimitMin) {
+              alert(
+                key.split("_Sale")[0] +
+                  " RSP value cannot be below " +
+                  String(rspLimitMin)
+              );
               rspInRange = false;
             } else {
-              if (data[key.split("_Sale")[0] + "_RSP"] > 700) {
+              if (data[key.split("_Sale")[0] + "_RSP"] > rspLimitMax) {
                 alert(
                   key.split("_Sale")[0] +
-                    " RSP value cannot be greater than 700"
+                    " RSP value cannot be greater than " +
+                    String(rspLimitMax)
                 );
                 rspInRange = false;
               }
