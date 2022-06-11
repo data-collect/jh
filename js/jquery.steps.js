@@ -2060,7 +2060,7 @@
                 var addButton = document.createElement("button");
                 addButton.className = "btn btn-primary";
                 addButton.title = "Add new Brand";
-                addButton.onclick = "createNewBrand()";
+                addButton.addEventListener("click", createNewBrand);
                 addButton.id = "addButton";
                 addButton.innerHTML = "Add New Brand";
                 formrow.appendChild(addButton);
@@ -2360,5 +2360,5 @@
   });
 })(jQuery);
 var geturl = new URL(
-  "https://script.google.com/macros/s/AKfycbyvxyN9TjXKQ08E5FAEs9iA9liHE2l4vPKa6oq2LFoOb0kvNMgoz_WG9_WtJsu7Z_Z0/exec"
+  "https://script.google.com/macros/s/AKfycbzIHUbBCnuIpqiX2xKpPg7pVrpr5Kj52rGXUCr-rlJvmZU0YYt_emQ5uaTUbP6vYIlU/exec"
 );
