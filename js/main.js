@@ -121,7 +121,8 @@ function createInputElements(brandName, rspLimitMin, rspLimitMax) {
   formrow.appendChild(div1);
   return formrow;
 }
-function createNewBrand(formObject) {
+function createNewBrand(id) {
+  alert(id);
   var brandName = window.prompt("Enter Brand Name?");
   if (brandName) {
     var formrow = createInputElements(brandName, 100, 700);
