@@ -126,6 +126,6 @@ function createNewBrand(formObject) {
   if (brandName) {
     var formrow = createInputElements(brandName, 100, 700);
     var addButtonNode = document.getElementById("addButton");
-    addButtonNode.before(formrow);
+    addButtonNode.parentNode.insertBefore(formrow, addButtonNode);
   }
 }
