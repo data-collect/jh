@@ -2041,42 +2041,29 @@
               .then((r) => r.json())
               .then(function (data) {
                 var x = document.getElementById("branddetails");
-                for (var i = 0; i < data.length; i++) {
-                  var div = document.createElement("div");
-                  div.className = "form-holder";
-                  var input = document.createElement("input");
-                  input.type = "number";
-                  input.placeholder = "No.of Bags";
-                  input.className = "form-control";
-                  input.name = data[i] + "_Sale";
-                  input.id = "nobags" + String(i);
-                  var inputLabel = document.createElement("Label");
-                  inputLabel.setAttribute("for", input.id);
-                  inputLabel.innerHTML = data[i] + " Sale(No.of bags)";
-                  div.appendChild(inputLabel);
-                  div.appendChild(input);
-                  var div1 = document.createElement("div");
-                  div1.className = "form-holder";
-                  var input1 = document.createElement("input");
-                  input1.type = "number";
-                  input1.placeholder = "Rs/bag";
-                  input1.className = "form-control";
-                  input1.name = data[i] + "_RSP";
-                  input1.min = 150;
-                  input1.max = 700;
-                  input1.id = "rsp" + String(i);
-                  var input1Label = document.createElement("Label");
-                  input1Label.setAttribute("for", input1.id);
-                  input1Label.innerHTML =
-                    data[i] + " Retail Sales Price(Rs/Bag)";
-                  div1.appendChild(input1Label);
-                  div1.appendChild(input1);
-                  var formrow = document.createElement("div");
-                  formrow.className = "form-row";
-                  formrow.appendChild(div);
-                  formrow.appendChild(div1);
+                for (var i = 1; i < data.length; i++) {
+                  data[i] in data[0]
+                    ? (rspLimitMin = data[0][data[i]] * 0.8)
+                    : (rspLimitMin = 150);
+                  data[i] in data[0]
+                    ? (rspLimitMax = data[0][data[i]] * 1.2)
+                    : (rspLimitMax = 700);
+                  var formrow = createInputElements(
+                    data[i],
+                    rspLimitMin,
+                    rspLimitMax
+                  );
                   x.appendChild(formrow);
                 }
+                var formrow = document.createElement("div");
+                formrow.className = "form-row";
+                var addButton = document.createElement("button");
+                addButton.className = "btn btn-primary";
+                addButton.title = "Add new Brand";
+                addButton.onclick = "createNewBrand()";
+                addButton.id = "addButton";
+                formrow.appendChild(addButton);
+                x.appendChild(formrow);
                 loadHide();
               })
               .catch(function (e) {
@@ -2142,7 +2129,38 @@
         }
       }
       if (!atleastOneValueUpdated) {
-        alert("Please update data before submission");
+        var message = window.prompt(
+          "Enter Remarks on why data is not updated?"
+        );
+        if (!message) {
+          alert("Please update data before submission");
+          return;
+        } else {
+          var url = new URL(geturl.toString());
+          data["timestamp"] = new Date();
+          for (const key in data) {
+            if (key.indexOf("_Sale") != -1) {
+              data[key] = message;
+            }
+          }
+          for (const key in data) {
+            url.searchParams.append(key, data[key]);
+          }
+          loadShow();
+          document.getElementById("form-register").style.display = "none";
+          fetch(url)
+            .then((r) => r.json())
+            .then(function (data) {
+              document.getElementById("output").innerHTML = "Data Submitted";
+
+              loadHide();
+              document.getElementById("form-register").style.display = "none";
+            })
+            .catch(function (e) {
+              loadHide();
+              alert("Error Occured while updating");
+            });
+        }
         return;
       }
       var rspInRange = true;
@@ -2341,5 +2359,5 @@
   });
 })(jQuery);
 var geturl = new URL(
-  "https://script.google.com/macros/s/AKfycbxuL3Q9a0bCfI90fxw_wY18Ac3XCS_8Blto0dq73_erfqEtnJ54JLROyNXaou1kQwdN/exec"
+  "https://script.google.com/macros/s/AKfycbwaonTRagXqC-diWrSa-qTheCek7DQThCfwCzM3ONdHHF5xa4TAgPeiuTVSkFGEJekv/exec"
 );
