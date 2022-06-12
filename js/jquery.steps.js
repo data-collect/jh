@@ -2060,7 +2060,7 @@
                 var addButton = document.createElement("button");
                 addButton.className = "btn btn-primary";
                 addButton.title = "Add new Brand";
-                addButton.addEventListener("click", createNewBrand(this.id));
+                addButton.onclick = createNewBrand;
                 addButton.id = "addButton";
                 addButton.innerHTML = "Add New Brand";
                 formrow.appendChild(addButton);
