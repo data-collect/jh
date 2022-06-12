@@ -2056,6 +2056,7 @@
                   x.appendChild(formrow);
                 }
                 var formrow = document.createElement("div");
+                formrow.id = "addButtonFormRow";
                 formrow.className = "form-row";
                 var addButton = document.createElement("button");
                 addButton.className = "btn btn-primary";
