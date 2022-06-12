@@ -122,7 +122,6 @@ function createInputElements(brandName, rspLimitMin, rspLimitMax) {
   return formrow;
 }
 function createNewBrand(id) {
-  alert(id);
   var brandName = window.prompt("Enter Brand Name?");
   if (brandName) {
     var formrow = createInputElements(brandName, 100, 700);
