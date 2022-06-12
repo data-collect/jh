@@ -2055,7 +2055,7 @@
                   );
                   x.appendChild(formrow);
                 }
-                /* var formrow = document.createElement("div");
+                var formrow = document.createElement("div");
                 formrow.className = "form-row";
                 var addButton = document.createElement("button");
                 addButton.className = "btn btn-primary";
@@ -2064,7 +2064,7 @@
                 addButton.id = "addButton";
                 addButton.innerHTML = "Add New Brand";
                 formrow.appendChild(addButton);
-                x.appendChild(formrow); */
+                x.appendChild(formrow);
                 loadHide();
               })
               .catch(function (e) {
