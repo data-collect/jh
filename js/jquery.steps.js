@@ -2062,6 +2062,7 @@
                 addButton.title = "Add new Brand";
                 addButton.onclick = createNewBrand;
                 addButton.id = "addButton";
+                addButton.type = "button";
                 addButton.innerHTML = "Add New Brand";
                 formrow.appendChild(addButton);
                 x.appendChild(formrow);
